@@ -207,10 +207,16 @@ pub fn SettingsPage() -> Element {
 
             fieldset {
                 legend { "PDF rendering" }
-                label { "Chromium / Chrome executable"
-                    input {
-                        value: "{draft.read().chromium_path}",
-                        oninput: move |e| draft.write().chromium_path = e.value(),
+                label { "Chromium / Chrome / Edge executable"
+                    div { class: "row",
+                        input {
+                            value: "{draft.read().chromium_path}",
+                            oninput: move |e| draft.write().chromium_path = e.value(),
+                        }
+                        button {
+                            onclick: move |_| draft.write().chromium_path = crate::pdf::detect_chromium(),
+                            "Auto-detect"
+                        }
                     }
                 }
             }

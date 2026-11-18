@@ -63,7 +63,7 @@ impl Default for Settings {
             num_ctx: 8192,
             temperature: 0.1,
             max_image_dim: 1536,
-            chromium_path: "chromium".into(),
+            chromium_path: crate::pdf::detect_chromium(),
         }
     }
 }
