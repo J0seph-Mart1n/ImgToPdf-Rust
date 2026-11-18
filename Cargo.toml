@@ -1,0 +1,24 @@
+[package]
+name = "img_to_pdf"
+version = "0.1.0"
+authors = ["Joseph Martin <jmkl0987@gmail.com>"]
+edition = "2021"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+dioxus = { version = "0.7.1", features = ["router"] }
+anyhow = "1"
+base64 = "0.22"
+dirs = "6"
+reqwest = { version = "0.12", features = ["json"] }
+rfd = { version = "0.17", default-features = false, features = ["xdg-portal"] }
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+tokio = { version = "1", features = ["process", "fs"] }
+image = "0.25"
+
+[features]
+# This is a desktop-only app: it uses native file dialogs, spawns Chromium and talks to a local Ollama server.
+default = ["desktop"]
+desktop = ["dioxus/desktop"]
